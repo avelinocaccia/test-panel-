@@ -12,10 +12,10 @@ import { useState } from 'react';
 
 
 
+
 export const LoginPage = () => {
 
-  const [isLogged, setIsLogged] = useState(false)
-  const {postUser} = useContext(UserContext)
+  const {postUser,isLogged} = useContext(UserContext)
 
 
   const { formState, onInputChange} = useForm({
@@ -30,26 +30,17 @@ export const LoginPage = () => {
     e.preventDefault();
 
       postUser(email, password)
-
-      if(isLogged === false){
-        setIsLogged(true)
-      }
+      
+      
     
   }
-
-
-  // useEffect(() => {
-  //   getUser()
-  // }, [isLogged])
-  
-
 
   
 
 
   return (
   
-        <UserState>
+        
 
           <form onSubmit={ handleSubmit } className='flex flex-col justify-center items-center '>
                 <div className="mb-6 ">
@@ -93,7 +84,7 @@ export const LoginPage = () => {
                 </button>
         
               </form>
-        </UserState>
+        
              
 
 

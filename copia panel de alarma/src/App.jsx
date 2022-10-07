@@ -1,8 +1,9 @@
 import './App.css'
 import { Routes, Route} from 'react-router-dom'
 import  {LoginPage}  from './pages/LoginPage'
-import Layout from './pages/layout'
+
 import UserState from './context/User/UserState'
+import Ejemplo from './pages/Ejemplo'
 
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
           <Routes>
            
 
-              <Route  path='/login' element={<LoginPage />}/>
-              <Route  path='layout' element={<Layout />}/>
+              <Route exact path='/login' element={<LoginPage />}/>
+              <Route exact path='/ejemplo' element={<Ejemplo />}/>
             
           </Routes>
           </UserState>
