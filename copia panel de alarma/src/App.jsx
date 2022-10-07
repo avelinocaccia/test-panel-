@@ -1,12 +1,28 @@
 import './App.css'
-import { LoginPage } from './pages/LoginPage'
+import { Routes, Route} from 'react-router-dom'
+import  {LoginPage}  from './pages/LoginPage'
+import Layout from './pages/layout'
+import UserState from './context/User/UserState'
+
 
 function App() {
 
   return (
-    <div className="App">
-        <LoginPage />   
-    </div>
+        
+        <> 
+        <UserState>
+          <Routes>
+           
+
+              <Route  path='/login' element={<LoginPage />}/>
+              <Route  path='layout' element={<Layout />}/>
+            
+          </Routes>
+          </UserState>
+        </>
+
+        
+      
   )
 }
 

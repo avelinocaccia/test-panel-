@@ -1,1 +1,0 @@
-const ja = 0
