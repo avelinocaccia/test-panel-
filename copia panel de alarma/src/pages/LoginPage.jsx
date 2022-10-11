@@ -6,6 +6,7 @@ import UserState from '../context/User/UserState';
 import { useContext } from 'react';
 import UserContext from '../context/User/UserContext';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -15,8 +16,11 @@ import { useState } from 'react';
 
 export const LoginPage = () => {
 
-  const {postUser,isLogged} = useContext(UserContext)
-
+  const {user,postUser,status} = useContext(UserContext)
+  // const [IsLogged, setIsLogged] = useState(false)
+  console.log('ME EJECUTO DESDE EL COMPONENTE LOGIN',status);
+  
+  const navigate = useNavigate();
 
   const { formState, onInputChange} = useForm({
     email: '',
@@ -26,17 +30,23 @@ export const LoginPage = () => {
   const {email, password } = formState;
   
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
       postUser(email, password)
-      
-      
     
+
+   
+
   }
+  
 
   
 
+
+  
+
+  
 
   return (
   
@@ -59,7 +69,7 @@ export const LoginPage = () => {
                   
                 </div>
                 <div className="mb-6">
-                  <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black-300">password</label>
+                  <label htmlFor="password" className="block mb-2 text-sm font-medium text-black-900 dark:text-black-300">password</label>
                   <input 
                     type="password" 
                     name="password" 
@@ -77,10 +87,10 @@ export const LoginPage = () => {
                   
                 </div>
                 <button
-              
+                
                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-3/12 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
                 >
-                  login
+                 login
                 </button>
         
               </form>
