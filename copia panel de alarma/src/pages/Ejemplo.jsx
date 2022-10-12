@@ -5,13 +5,13 @@ import UserContext from '../context/User/UserContext';
 
 const Ejemplo = () => {
     
-    const {user, getUser,status} = useContext(UserContext)
-    console.log({user});
+    const {user, getUser} = useContext(UserContext)
+   
 
       useEffect(() => {
-        if(status === 200){
+        
           getUser()
-        }
+        
       }, [])
       
   

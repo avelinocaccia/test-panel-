@@ -5,13 +5,15 @@ import { URL } from '../../env';
 
 
 
+
+
 const UserState = ({children}) => {
   
     const [user, setUser] = useState({})
     const [status, setStatus] = useState({})
-
+    const navigate = useNavigate()
     const token = localStorage.getItem( 'token' )
-  
+
 
 
     const postUser = async (email, password) => {
@@ -32,6 +34,12 @@ const UserState = ({children}) => {
             const { access_token } = resp.data;
             const { status } = resp
             setStatus(status)
+
+            if(status === 200) {
+              navigate('/ejemplo')
+            }
+              
+            
             
             
             
