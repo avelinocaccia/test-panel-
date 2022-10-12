@@ -10,48 +10,36 @@ import { URL } from '../../env';
 const UserState = ({children}) => {
   
     const [user, setUser] = useState({})
-    const [status, setStatus] = useState({})
-    const navigate = useNavigate()
+    
     const token = localStorage.getItem( 'token' )
 
 
 
     const postUser = async (email, password) => {
-        try {
+        
+      try {
             
-            const loginUrl = `${URL}/auth/login` 
-            await axios.post(loginUrl,{
+          const loginUrl = `${URL}/auth/login` 
+          let response = await axios.post(loginUrl,{
               email,
               password
             },{
             headers: {
                 'Authorization':`Basic ${token}`
             }
-            }).then( resp => {
-            
-           console.log(resp);
-            
-            const { access_token } = resp.data;
-            const { status } = resp
-            setStatus(status)
-
-            if(status === 200) {
-              navigate('/ejemplo')
-            }
-              
-            
-            
-            
-            
-            localStorage.setItem( 'token', access_token )
-            
-            
-            
             })
-        } catch (error) {
-            console.log(error)
-        }
 
+            const { access_token } = response.data;
+            localStorage.setItem( 'token', access_token )
+             
+
+            return response;
+             
+            
+          } catch (error) {
+            console.log(error)
+          }
+          
     }
 
     const getUser = async () => {
@@ -88,7 +76,7 @@ const UserState = ({children}) => {
 
   
     return (
-       <UserContext.Provider value={{user,postUser, getUser, status }}>
+       <UserContext.Provider value={{user,postUser, getUser}}>
             {children}
        </UserContext.Provider> 
   )

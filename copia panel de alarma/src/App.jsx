@@ -10,8 +10,7 @@ import { PrivateRutes } from './componentes/PrivateRutes'
 
 function App() {
   
-  // const {status} = useContext(UserContext)
-  // console.log('ME EJECUTO DESDE EL COMPONENTE APP',status)
+  
 
   return (
         
@@ -21,7 +20,7 @@ function App() {
             <Route element={ <PrivateRutes />} >
               <Route exact path='/ejemplo' element={<Ejemplo />}/> 
             </Route>
-              <Route exact path='/login' element={<LoginPage />}/>
+              <Route exact path='/' element={<LoginPage />}/>
         </Routes>
       
     </>

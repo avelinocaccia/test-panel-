@@ -6,7 +6,7 @@ import UserState from '../context/User/UserState';
 import { useContext } from 'react';
 import UserContext from '../context/User/UserContext';
 import { useState } from 'react';
-import { } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -16,9 +16,10 @@ import { } from 'react-router-dom';
 
 export const LoginPage = () => {
 
-  const {user,postUser,status} = useContext(UserContext)
+  const {postUser} = useContext(UserContext)
   // const [IsLogged, setIsLogged] = useState(false)
   // console.log('ME EJECUTO DESDE EL COMPONENTE LOGIN',status);
+  const navigate = useNavigate()
   
   
   
@@ -34,14 +35,20 @@ export const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-      postUser(email, password)
+    let res = await postUser(email, password)
+    res.status
+    if(res.status === 200){
     
-
+      navigate('/ejemplo')
+    }
    
 
   }
   
 
+  // useEffect(() => {
+  //   
+  // }, [handleSubmit])
   
 
 

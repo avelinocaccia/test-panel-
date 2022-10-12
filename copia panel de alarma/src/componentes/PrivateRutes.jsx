@@ -8,10 +8,12 @@ export const PrivateRutes = () => {
 
     // const {status} = useContext(UserContext);
     // const location = useLocation();
+    // console.log(status);
 
   return (
         localStorage.getItem('token')
+       
         ? <Outlet />
-        : <Navigate to='/login'/>
+        : <Navigate to='/'/>
     )
 }
